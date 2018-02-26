@@ -1,30 +1,18 @@
 module.exports = function check(str, bracketsConfig) {
   // your solution
   var arr = str.split('');
-  var sum, maxSum;
+  var sum, newI;
   sum = 0;
-  maxSum = -766766;
-  for (var k = 0; k < arr.length ; k++){
+  for (var k = 0; k < arr.length ; k++)
   for(var i = 0; i < bracketsConfig.length; i++)
   {
-  var sc = bracketsConfig[i];// достаем пару скобок
-
- 
     if(arr[k] == bracketsConfig[i][0]) {
       ++sum;
-      if(sum >= maxSum){
-      maxSum = sum;
-      }
-     // else{
-      //  return false;
-     /// }
+      newI = i;
     }
-    else{
-      --sum;
-      if(sum < 0 ) return false;
-    }
+    if(arr[k] == bracketsConfig[i][1] ) --sum;
+    if (sum < 0) return false;
   }
-}
 if(sum == 0){
   return true;
 }
